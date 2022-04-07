@@ -1,0 +1,16 @@
+{
+    "name": "dpoker",
+    "version": "1.0.0",
+    "description": "distributed poker with friends",
+    "main": "index.js",
+    "scripts": {
+        "room_server": "node room_server/server/server.js",
+        "game_server": "http-server ./game_server/game_files -p 8080 -c-1 -S -C ./certificates/certbot/conf/live/localhost/fullchain.pem -K ./certificates/certbot/conf/live/localhost/privkey.pem"
+    },
+    "author": "Francesco Biancucci",
+    "license": "ISC",
+    "dependencies": {
+        "node-sass": "^7.0.1",
+        "socket.io-client": "^4.4.1"
+    }
+}

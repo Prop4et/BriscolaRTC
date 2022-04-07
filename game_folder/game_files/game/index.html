@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="WebRTC game">
+        <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+        <meta itemprop="image" content="../images/favicon.jpg">
+        <meta itemprop="username" content="WebRTC game">
+        <meta id="theme-color" name="theme-color" content="#ffffff">
+    
+        <base target="_blank">
+    
+        <link rel="stylesheet" href="./styles/style.css"/>
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+        <script src="../libs/phaser.min.js"></script>
+        <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+        <title>Briscola</title>
+    </head>
+    
+    <body>        
+        <div class="container">
+          
+          <div class="game-div">
+            <div class="game-container" id="game_container"></div>
+
+            <div class="game-score " id="score_div">
+            </div>
+
+            <div class="game-start " id="player_div">
+              <p class="start-message " id="player_title">You're alone in the room</p>
+              <button class ="base-button rounded hide" id="start_game">Start</button>
+              <div class = "spin" id="spin"></div>
+            </div>
+          </div>
+          
+          <!--<div class = "lower-div">
+            <div class="user-cont" id="start_btn">
+              START  
+            </div>
+          </div>-->
+        </div>    
+        
+    <script src="../scripts/server_config.js"></script>
+    <script src="../scripts/config.js"></script>
+    <script src="scripts/game_config.js"></script>
+    <script src="scripts/objects/card.js"></script>
+    <script src="scripts/objects/deck.js"></script>
+    <script src="scripts/objects/zone.js"></script>
+    <script src="scripts/objects/dealer.js"></script>
+    <script src="scripts/objects/countdown.js"></script>
+    <script src="scripts/objects/game_scene.js"></script>
+    <script src="scripts/objects/disconnected.js"></script>
+
+
+    <script src="scripts/logic/state.js"></script>
+
+    <script src="scripts/connection/events.js"></script>
+    <script src="scripts/connection/peerConnection.js"></script>
+    <script src="scripts/connection/serverConnection.js"></script>
+    <script src="scripts/connection/gameRoom.js"></script>
+    <script src="scripts/main.js" defer></script>
+            
+    </body>
+</html>

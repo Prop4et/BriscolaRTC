@@ -1,0 +1,16 @@
+{
+    "name": "poker-dss",
+    "version": "1.0.0",
+    "description": "An attempt to build a distributded poker",
+    "main": "server.js",
+    "author": "Francesco Biancucci",
+    "license": "ISC",
+    "dev": "nodemon src/server.js",
+    "dependencies": 
+    {
+        "socket.io": "^3.1.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.13"
+      }
+}

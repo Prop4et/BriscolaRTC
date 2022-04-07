@@ -1,0 +1,12 @@
+const LOCAL = true;
+const HOSTNAME = "localhost";
+var ROOM_SERVER_PORT = 4040;
+var ROOM_CAPACITY = 4;
+
+module.exports = 
+{
+    LOCAL: LOCAL,
+    HOSTNAME: HOSTNAME,
+    ROOM_SERVER_PORT: ROOM_SERVER_PORT,
+    ROOM_CAPACITY: ROOM_CAPACITY,
+}

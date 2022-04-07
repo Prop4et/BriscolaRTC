@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="WebRTC game">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="image" content="../images/favicon.jpg">
+	<meta itemprop="username" content="WebRTC game">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+
+    <base target="_blank">
+
+    <title>Briscola</title>
+    <link rel="stylesheet" href="./styles/style.css"/>
+    <link rel="stylesheet" href="./styles/inputbox.css"/>
+    <link rel="stylesheet" href="./styles/button.css"/>
+
+
+
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+    <script src="scripts/server_config.js"></script>
+	<script src="scripts/config.js"></script>
+</head>
+
+<body>
+
+    <div class = "header">
+        <img src="./images/header.png" class="logo-image" alt="Image showing the 4 different suits">
+    </div>
+
+
+    <div class = "body">
+
+        
+
+        <div class="content">
+			
+            <div class="upper-div">
+                <div class="user-cont">
+                    <div class="form__group field">
+                        <input type="input" class="form__field" placeholder="Username" name="username" id='username' value='' required />
+                        <label for="username" class="form__label">Username </label>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class = "mid-div" id = "table_div">
+
+            </div>
+            <div class = "lower-div">
+                <div class="user-cont" id = "room_div">
+                    <div class="form__group field">
+                        <input type="input" class="form__field" placeholder="room name" name="room_name" id='room_name'/>
+                        <label for="room_name" class="form__label">Room Name </label>
+                    </div>
+                    <div class="new-room"> 
+                        <div class="button2" id="new_room_btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            New Room
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/functions.js" defer></script>
+</body>
+</html>

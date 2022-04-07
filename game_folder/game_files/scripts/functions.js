@@ -6,6 +6,7 @@ var new_room_btn = document.getElementById('new_room_btn');
 var data = null;
 
 var socket = io(SERVER_URL);
+
 socket.on(Message.ROOM_LIST, onRoomList);
 
 function cleanUp(username, room_name){

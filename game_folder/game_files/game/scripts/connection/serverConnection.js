@@ -223,6 +223,8 @@ class ServerConnection extends Events.Connection{
 					this.player_ready = message.ready;
                 if(this.player_ready === this.room_size){
 					document.getElementById("spin").style.visibility = "hidden";
+					document.getElementById("spin_text").style.visibility = "hidden";
+
 					this.log("all players ready","cyan");
                     this.socket.emit(Message.GAME_STARTED);
 					this.start = true;
@@ -255,6 +257,8 @@ class ServerConnection extends Events.Connection{
 			return;
 		}
 		document.getElementById("spin").style.visibility = "visible";
+		document.getElementById("spin_text").style.visibility = "visible";
+
 
 		this.setStart();
 
@@ -277,6 +281,8 @@ class ServerConnection extends Events.Connection{
 				size: this.room_size
 			});
 		document.getElementById("spin").style.visibility = "hidden";
+		document.getElementById("spin_text").style.visibility = "hidden";
+
 		this.setStart();
 		}
 	}
@@ -299,6 +305,8 @@ class ServerConnection extends Events.Connection{
 	restart(){
 		this.player_ready = 0;
 		document.getElementById("spin").style.visibility = "visible";
+		document.getElementById("spin_text").style.visibility = "visible";
+
 	}
 
 	resetStart(){
@@ -310,6 +318,8 @@ class ServerConnection extends Events.Connection{
 		if(this.room_size > 1){
 			player_title.innerHTML = "Start game with " + this.room_size  + " players?";
 			document.getElementById("spin").style.visibility = "hidden";
+			document.getElementById("spin_text").style.visibility = "hidden";
+
 			start_game.disabled = false;
 			start_game.innerHTML = "Start";
 			document.getElementById("player_div").className = "game-start show";
@@ -318,6 +328,8 @@ class ServerConnection extends Events.Connection{
 		}else{
 			this.setStart();
 			document.getElementById("spin").style.visibility = "visible";
+			document.getElementById("spin_text").style.visibility = "visible";
+
 		}
 
 

@@ -9,3 +9,6 @@ certificates
 
 #node modules
 node_modules
+
+#vscode config
+.vscode

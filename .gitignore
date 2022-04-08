@@ -4,9 +4,6 @@ ngrok
 #certificates
 certificates
 
-#images
-**/images
-
 #node modules
 node_modules
 

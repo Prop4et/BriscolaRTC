@@ -68,18 +68,6 @@ html
   border-radius: 1vw;
 }
 
-.game-container-overlay
-{
-  position:absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  border-radius: 1vw;
-  background-color: rgba(0, 0, 0, 0);
-  transition: 2s;
-}
-
 .game-score
 {
   text-align: center;

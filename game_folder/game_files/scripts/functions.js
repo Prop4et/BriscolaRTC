@@ -83,10 +83,10 @@ function onRoomList(msg){
         
 		var room_title = room_name;
 		var width = (room_players.length / ROOM_CAPACITY)*100;
-		var room_item_content = "<div class='room-capacity'><div class='room-title'>" + room_title;
+		var room_item_content = "<div class='room-capacity'><div class='room-title'> Room Name: " + room_title;
 		room_item_content += "</div><div class='room-current-capacity' style='width: " + width + "%'></div></div>";
 
-		room_item_content += "<div class='room-players'>";
+		room_item_content += "<div class='room-players'> Players:";
 		room_players.forEach(function(room_player_name)
 		{
 			room_item_content+= "<div class='room-player'>" + room_player_name + "</div>";

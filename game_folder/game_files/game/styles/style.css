@@ -93,11 +93,10 @@ html
 {
   color: rgba(255, 255, 255, 0);
   text-align: center;
-  position: relative;
-  top: 40%;
-  width: 12%;
-  height: 20%;
-  left: 44.5%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .score-title
@@ -122,7 +121,7 @@ html
 {
   user-select: none;
   color: rgba(255, 255, 255, 0);
-  font-size: x-small;
+  font-size: large;
 }
 
 .start-game{
@@ -170,7 +169,6 @@ html
 .styled-table thead tr {
   background-color: #a7091e;
   color: #000000;
-  text-align: left;
 }
 
 .styled-table th,

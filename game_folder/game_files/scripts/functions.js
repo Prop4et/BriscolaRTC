@@ -87,10 +87,16 @@ function onRoomList(msg){
 		room_item_content += "</div><div class='room-current-capacity' style='width: " + width + "%'></div></div>";
 
 		room_item_content += "<div class='room-players'> Players:";
+        var j = 0;
 		room_players.forEach(function(room_player_name)
 		{
 			room_item_content+= "<div class='room-player'>" + room_player_name + "</div>";
+            j++;
 		}); 
+        while(j<ROOM_CAPACITY){
+            room_item_content+= "<div class='room-player'> - </div>";
+            j++;
+        }
 		room_item_content += "</div>";
 
 		room_item.innerHTML = room_item_content;

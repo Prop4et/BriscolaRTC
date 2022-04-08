@@ -1,7 +1,7 @@
 {
-    "name": "dpoker",
+    "name": "distributed_briscola",
     "version": "1.0.0",
-    "description": "distributed poker with friends",
+    "description": "distributed briscola with friends",
     "main": "index.js",
     "scripts": {
         "room_server": "node room_server/server/server.js",

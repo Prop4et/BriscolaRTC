@@ -96,3 +96,6 @@ If you want to access your game from everywhere you can instantiate an ubuntu (o
 - `package.json` - npm package description
 - `run_local.sh` - script to update configs to run the game locally
 - `run_docker.sh` - script to update configs to run the game with Docker
+
+### Structure approximation
+![structure](screenshots/structure.png)

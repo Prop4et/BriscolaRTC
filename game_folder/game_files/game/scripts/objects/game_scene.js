@@ -53,9 +53,7 @@ class GameScene extends Phaser.Scene{
         this.my.remote_players = {};
         this.my.connection_handlers = {};
         // Messages from peers
-        this.my.connection_handlers[Message.PEER_OPEN] = this.onPeerOpen;
         this.my.connection_handlers[Message.PEER_CLOSE] = this.onPeerClose;
-        this.my.connection_handlers[Message.PEER_MESSAGE] = this.onPeerMessage;
 
         // Messages from the room server
         this.my.connection_handlers[Message.PLAYER_JOIN] = this.onRemotePlayerJoin;
@@ -133,7 +131,7 @@ class GameScene extends Phaser.Scene{
             scene.dealer.getSprite().destroy();
             scene.countDown.setLabel('60.00');
             scene.my.connection.setEndGame();
-            scene.my.connection.restart();
+            scene.my.connection.resetStart();
             scene.zone.reset();
             scene.zone.paintZones(scene, GAME_CONFIG.scale.width, GAME_CONFIG.scale.height);
             scene.deck.resetCards();
@@ -190,15 +188,17 @@ class GameScene extends Phaser.Scene{
         this.my.connection.removePeer(player_info.player_id);
         this.log('peer with id: ' + player_info.player_id + ' disconnected', 'purple');
         this.connection_state.set(player_info.player_id, 'disconnected');
-        //peer may disconnect while playing or while drawing
-        if(!this.my.connection.start)
+        if(!this.my.connection.start){
+            this.my.connection.resetStart();
             return;
+        }
         if(this.remoteSize() === 0){
             this.countDown.stop();
             tableCreate(this.state.getOrderedPoints(), this.names, this.connection_state, this.restartButton(this))
 
             return;
         }
+        //peer may disconnect while playing or while drawing
         if(this.state.getIsDrawing()){
             //if the disconnected id comes before me i need to know who is the first that needs to restart the chain of drawing
             console.log('player disconnected during drawing phase', this.state.getCurrent());

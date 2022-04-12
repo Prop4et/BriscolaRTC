@@ -99,3 +99,6 @@ If you want to access your game from everywhere you can instantiate an ubuntu (o
 
 ### Structure approximation
 ![structure](screenshots/structure.png)
+
+### Class diagram
+![class](screenshots/class.png)

@@ -82,16 +82,8 @@ class State{
         return cards;
     }
 
-    getPosition(){
-        return this.#dealer_pos;
-    }
-
     getDealer(){
         return this.#dealer;
-    }
-
-    getPositionFromId(id){
-        return this.#players_id.indexOf(id);
     }
 
     getStarterDict(){
@@ -361,31 +353,11 @@ class State{
         //console.log('current: ', this.#current, 'position: ', position, 'dealer plus', this.#dealer_plus);
     }
 
-    retDealerPlusOne(){
-        return this.#players_id[(this.#dealer_pos + 1) % this.#n_players];
-    }
-
     incDealer(){
         while(this.#played.get(this.#dealer) === -1){
             this.#dealer_pos = (this.#dealer_pos + 1) % this.#n_players;
             this.#dealer = this.#players_id[this.#dealer_pos];
         }
-    }
-
-    getNext(){
-        this.incCurrent();
-        return this.#dealer_plus !== 0;
-    }
-
-    //previous with respect to current
-    isPrevId(my_id){
-        var pos;
-        for(var i = this.#dealer_plus; i >= 0; i--){
-            pos = (i + this.#dealer_pos) % this.#n_players;
-            if(this.#players_id[pos] === my_id)
-                return true;
-        }
-        return false;
     }
 
     getDirectionRelativeToId(my_id, other_id){
@@ -491,10 +463,6 @@ class State{
 
     whoWins(){
         return Math.max(...Array.from(this.#points.values()));
-    }
-
-    getDeck(){
-        return this.#cards_in_deck;
     }
 
 }

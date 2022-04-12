@@ -1,17 +1,15 @@
 class ServerConnection extends Events.Connection{
-    constructor(server_url, room_name, player_name, token, btn_val){
+    constructor(server_url, room_name, player_name,  btn_val){
         super();
-        this.server_url = server_url;
         this.room_name = room_name;
         this.player_name = player_name;
 		this.player_ready = 0;
 		this.start = false;
-        this.token = token;
 		this.btn_val = btn_val;
         this.player_id = null;
 		this.points_shown = false;
 
-        this.socket = io(this.server_url);
+        this.socket = io(server_url);
         this.room_info = null;
 
         this.peer_connections = {};
@@ -52,7 +50,6 @@ class ServerConnection extends Events.Connection{
 		this.socket.emit(Message.ROOM_JOIN, {
 			room_name: this.room_name,
 			player_name: this.player_name,
-			token: token,
 			flag_create: this.btn_val
 		});
 		
@@ -302,12 +299,6 @@ class ServerConnection extends Events.Connection{
     	console.log("%c ServerConnection: %s", "color:" + color, message);
   	}
 
-	restart(){
-		this.player_ready = 0;
-		document.getElementById("spin").style.visibility = "visible";
-		document.getElementById("spin_text").style.visibility = "visible";
-
-	}
 
 	resetStart(){
 		this.player_ready = 0;

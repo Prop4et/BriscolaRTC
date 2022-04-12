@@ -5,7 +5,6 @@ const query_params = new URLSearchParams(window.location.search);
 const room_name = query_params.get('room_name');
 const player_name = query_params.get('player_name');
 const btn_val = query_params.get('btn_val');
-const token = query_params.get('token');
 
 
 //variables
@@ -26,7 +25,7 @@ function initiateRoom(){
     
     if(!created_game_room){
         created_game_room = true;
-        game_room = new GameRoom(SERVER_URL, room_name, player_name, token, btn_val);
+        game_room = new GameRoom(SERVER_URL, room_name, player_name, btn_val);
         start_game.onclick = function(){
             game_room.setReady();
         }

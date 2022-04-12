@@ -4,7 +4,6 @@ var config = require('./config');
 const https = require('https');
 
 var fs = require('fs');
-const { loadavg } = require('os');
 
 //then certificates should be handled i think
 var options = 
@@ -13,16 +12,8 @@ var options =
 	rejectUnauthorized: false
 };
 
-if (config.LOCAL)
-{
-	options["cert"] = fs.readFileSync("./certificates/certbot/conf/live/localhost/fullchain.pem");
-	options["key"] = fs.readFileSync("./certificates/certbot/conf/live/localhost/privkey.pem");
-}
-else
-{
-	options["cert"] = fs.readFileSync("/etc/letsencrypt/live/" + config.HOSTNAME + "/fullchain.pem");
-	options["key"] = fs.readFileSync("/etc/letsencrypt/live/" + config.HOSTNAME + "/privkey.pem");
-}
+options["cert"] = fs.readFileSync("./certificates/certbot/conf/live/localhost/fullchain.pem");
+options["key"] = fs.readFileSync("./certificates/certbot/conf/live/localhost/privkey.pem");
 
 var server = https.createServer(options);
 server.listen(config.ROOM_SERVER_PORT);

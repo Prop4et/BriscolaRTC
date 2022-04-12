@@ -1,6 +1,6 @@
 class GameRoom{
-    constructor(server_url, room_name, player_name, token, btn_val){
-        this.server_connection = new ServerConnection(server_url, room_name, player_name, token, btn_val);
+    constructor(server_url, room_name, player_name, btn_val){
+        this.server_connection = new ServerConnection(server_url, room_name, player_name, btn_val);
         this.game = null;
 
         this.server_connection.on(Message.ROOM_JOINED, this.onJoinedRoom, this);

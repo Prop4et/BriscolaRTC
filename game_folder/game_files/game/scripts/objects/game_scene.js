@@ -183,10 +183,7 @@ class GameScene extends Phaser.Scene{
         //disconnect from everyone cause time's up
     }
 
-    onPeerOpen(player_info, peer_connection){
-    }
-
-    onPeerClose(player_info, peer_connection){
+    onPeerClose(player_info){
         //a peer disconnected, need to use the message cause the state wasn't reliable
         delete this.my.remote_players[player_info.player_id];
 
@@ -227,10 +224,6 @@ class GameScene extends Phaser.Scene{
         this.disconnectedLogo.push(new Disconnected(this, position));
     }
 
-    onPeerMessage(message, player_info, peer_connection){
-        console.log("peer message " + message.type);
-    }
-
     onRemotePlayerJoin(data){
         if(!this.my.remote_players[data.player.player_id]){
             this.my.remote_players[data.player.player_id] = data;
@@ -238,8 +231,6 @@ class GameScene extends Phaser.Scene{
             this.connection_state.set(data.player.player_id, 'connected');
         }
     }
-
-    
 
     onPlayersReady(data){
         //all the players are ready

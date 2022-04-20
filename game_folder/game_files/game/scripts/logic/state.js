@@ -360,6 +360,11 @@ class State{
         }
     }
 
+    getNext(){
+        this.incCurrent();
+        return this.#dealer_plus !== 0;
+    }
+
     getDirectionRelativeToId(my_id, other_id){
         var my_position = this.#direction_id.indexOf(my_id);
         var other_position = this.#direction_id.indexOf(other_id);

@@ -68,7 +68,13 @@ class GameScene extends Phaser.Scene{
         this.my.connection_handlers[InGameMessage.CARD_PLAYED] = this.onCardPlayed;
     }
 
+    
+
     preload(){
+        window.addEventListener('resize', () => {
+            if(this.zone)
+                this.zone.onresize();
+        })
         //font
         this.plugins.get('rexwebfontloaderplugin').addToScene(this);
         var config = 

@@ -31,7 +31,6 @@ function initiateRoom(){
         }
         document.addEventListener("visibilitychange", (event) => {
             if (document.visibilityState != "visible") {
-                alert('lost page focus, disconnecting');
                 window.location = "/";
             } 
         });

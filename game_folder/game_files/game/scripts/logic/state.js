@@ -365,6 +365,16 @@ class State{
         return this.#dealer_plus !== 0;
     }
 
+    isPrevId(my_id){
+        var pos;
+        for(var i = this.#dealer_plus; i >= 0; i--){
+            pos = (i + this.#dealer_pos) % this.#n_players;
+            if(this.#players_id[pos] === my_id)
+                return true;
+        }
+        return false;
+    }
+
     getDirectionRelativeToId(my_id, other_id){
         var my_position = this.#direction_id.indexOf(my_id);
         var other_position = this.#direction_id.indexOf(other_id);

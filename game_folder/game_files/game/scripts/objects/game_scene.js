@@ -31,10 +31,14 @@ function tableCreate(mapPoints, mapNames, mapConnection, btn) {
         }
     }
     //append all the children
-    
+    const btnhome = document.createElement('button');
+    btnhome.className =  "base-button rounded";
+    btnhome.innerHTML = "Home";
+    btnhome.onclick = () => {window.location = "/";}
     tbl.appendChild(tbdy);
     div.appendChild(tbl);
     div.appendChild(btn);
+    div.appendChild(btnhome);
   }
 
 class GameScene extends Phaser.Scene{
@@ -136,8 +140,8 @@ class GameScene extends Phaser.Scene{
         btn.onclick = function(){
             scene.dealer.getSprite().destroy();
             scene.countDown.setLabel('60.00');
-            scene.my.connection.setEndGame();
             scene.my.connection.resetStart();
+            scene.my.connection.setPointsShown(false);
             scene.zone.reset();
             scene.zone.paintZones(scene, GAME_CONFIG.scale.width, GAME_CONFIG.scale.height);
             scene.deck.resetCards();
@@ -182,7 +186,6 @@ class GameScene extends Phaser.Scene{
     
     handleCDfinished(){
         this.my.connection.disconnect();
-        alert('you have been disconnected');
         window.location = "/";
         //disconnect from everyone cause time's up
     }
@@ -194,7 +197,7 @@ class GameScene extends Phaser.Scene{
         this.my.connection.removePeer(player_info.player_id);
         this.log('peer with id: ' + player_info.player_id + ' disconnected', 'purple');
         this.connection_state.set(player_info.player_id, 'disconnected');
-        if(!this.my.connection.start){
+        if(!this.my.connection.start && !this.my.connection.points_shown){
             this.my.connection.resetStart();
             return;
         }
@@ -415,9 +418,9 @@ class GameScene extends Phaser.Scene{
             await this.deck.removeDisconnection(removed);
         if(this.state.getCountPlayed() === 40){
             //entire map, maybe u want to show this idk
+            this.my.connection.setEndGame();
             this.my.connection.setPointsShown(true);
             tableCreate(this.state.getOrderedPoints(), this.names, this.connection_state, this.restartButton(this))
-            this.my.connection.setEndGame();
             return;
         }
         //animate button moving to whoever took

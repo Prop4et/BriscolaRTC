@@ -301,6 +301,7 @@ class ServerConnection extends Events.Connection{
 
 
 	resetStart(){
+		this.setEndGame();
 		this.player_ready = 0;
 		var player_title = document.getElementById('player_title');
 		var start_game = document.getElementById("start_game");

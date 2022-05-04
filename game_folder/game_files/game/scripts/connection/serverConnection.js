@@ -138,9 +138,11 @@ class ServerConnection extends Events.Connection{
 
     onPlayerLeave(data){
 		this.log("Player with id " + data.player_id + " left the room", "cyan");
+		this.log("cards shown " + this.points_shown);
 		this.room_size = data.size;
-		
-		if(!this.start && !this.points_shown){
+		if(this.points_shown)
+			return;
+		if(!this.start){
 			this.resetStart();
 			return;
 		}
@@ -185,10 +187,7 @@ class ServerConnection extends Events.Connection{
 
 	onRoomExist(data){
 		this.log("Room exist, game still going on", "red");
-		var player_title = document.getElementById('player_title');
-		document.getElementById('start_game').disabled = true;
-		document.getElementById('start_game').className = "base-button rounded";
-		player_title.innerHTML = "Game already started, join later";
+		alert("Game already started, join later");
 		setTimeout(() => {  window.location = "/"; }, 2000);
 	}
 
@@ -249,10 +248,14 @@ class ServerConnection extends Events.Connection{
 	}
 
 	setReady(){
+		if(this.points_shown)
+			return;
+		
 		if(this.room_size < 2){
 			alert('cannot start a game alone');
 			return;
 		}
+
 		document.getElementById("spin").style.visibility = "visible";
 		document.getElementById("spin_text").style.visibility = "visible";
 
@@ -301,12 +304,13 @@ class ServerConnection extends Events.Connection{
 
 
 	resetStart(){
-		this.setEndGame();
 		this.player_ready = 0;
 		var player_title = document.getElementById('player_title');
 		var start_game = document.getElementById("start_game");
 
-		
+		if(this.points_shown)
+			return;
+
 		if(this.room_size > 1){
 			player_title.innerHTML = "Start game with " + this.room_size  + " players?";
 			document.getElementById("spin").style.visibility = "hidden";

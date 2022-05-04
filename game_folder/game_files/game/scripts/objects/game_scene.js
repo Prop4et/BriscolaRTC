@@ -140,7 +140,6 @@ class GameScene extends Phaser.Scene{
         btn.onclick = function(){
             scene.dealer.getSprite().destroy();
             scene.countDown.setLabel('60.00');
-            scene.my.connection.resetStart();
             scene.my.connection.setPointsShown(false);
             scene.zone.reset();
             scene.zone.paintZones(scene, GAME_CONFIG.scale.width, GAME_CONFIG.scale.height);
@@ -151,6 +150,7 @@ class GameScene extends Phaser.Scene{
                 scene.disconnectedLogo[i].destroy();
             const div = document.getElementById('score_div');
             div.textContent = '';
+            scene.my.connection.resetStart();
         }
         return btn;
     }
@@ -197,14 +197,19 @@ class GameScene extends Phaser.Scene{
         this.my.connection.removePeer(player_info.player_id);
         this.log('peer with id: ' + player_info.player_id + ' disconnected', 'purple');
         this.connection_state.set(player_info.player_id, 'disconnected');
-        if(!this.my.connection.start && !this.my.connection.points_shown){
+        if(this.my.connection.points_shown)
+            return;
+
+        if(!this.my.connection.start){
             this.my.connection.resetStart();
             return;
         }
+        
         if(this.remoteSize() === 0){
             this.countDown.stop();
             tableCreate(this.state.getOrderedPoints(), this.names, this.connection_state, this.restartButton(this))
-
+            this.my.connection.setPointsShown(true);
+            this.my.connection.setEndGame();
             return;
         }
         //peer may disconnect while playing or while drawing
@@ -250,7 +255,6 @@ class GameScene extends Phaser.Scene{
         app.push(this.my.player_id);
         app = app.sort();
         this.state = new State(app);
-        
 
         //TODO:here i could show the name under the positions of each player
         var starter_list = [];
